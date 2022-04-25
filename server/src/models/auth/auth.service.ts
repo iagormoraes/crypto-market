@@ -48,7 +48,10 @@ export class AuthService {
     };
   }
 
-  async register(createUserDto: CreateUserDto) {
+  async register(
+    createUserDto: CreateUserDto,
+    extraAttributes?: Record<string, any>,
+  ) {
     const user = await this.usersService.findOne(createUserDto.email);
 
     if (user) throw new BadRequestException();
@@ -56,9 +59,11 @@ export class AuthService {
     const saltOrRounds = 10;
     const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
 
-    const createdUser = await this.usersService.create(
-      Object.assign(createUserDto, { password: hash }),
-    );
+    const createdUser = await this.usersService.create({
+      ...createUserDto,
+      ...extraAttributes,
+      password: hash,
+    });
     const { password, ...result } = createdUser;
 
     return result;
