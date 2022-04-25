@@ -15,6 +15,7 @@ export const UserSchema = new mongoose.Schema({
     type: String,
     enum: Object.values(RoleEnumValue),
     required: true,
+    default: RoleEnumValue.User,
   },
   password: {
     type: String,

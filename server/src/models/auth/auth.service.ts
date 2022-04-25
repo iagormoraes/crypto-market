@@ -1,9 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 
 import { UsersService } from '../users/users.service';
 import { User } from '../users/interfaces/user.inteface';
+import { CreateUserDto } from '../users/dtos/create-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -40,5 +46,31 @@ export class AuthService {
       access_token: token,
       access_token_expiration: new Date(exp * 1000).toISOString(),
     };
+  }
+
+  async register(createUserDto: CreateUserDto) {
+    const user = await this.usersService.findOne(createUserDto.email);
+
+    if (user) throw new BadRequestException();
+
+    const saltOrRounds = 10;
+    const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
+
+    const createdUser = await this.usersService.create(
+      Object.assign(createUserDto, { password: hash }),
+    );
+    const { password, ...result } = createdUser;
+
+    return result;
+  }
+
+  async createAccessToken(refreshToken: string) {
+    const decoded = this.jwtService.decode(refreshToken) as Record<string, any>;
+
+    if (!decoded) throw new BadRequestException();
+
+    const user = await this.usersService.findOne(decoded.email);
+
+    if (!user) throw new HttpException('Not found', HttpStatus.NOT_FOUND);
   }
 }
