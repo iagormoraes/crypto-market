@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  node:
+    container_name: crypto-market-node
+    restart: always
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    command: yarn start:dev
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+
+  mongo:
+    container_name: crypto-market-db
+    restart: always
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - app-network
+
+volumes:
+  node:
+
+networks:
+  app-network:
+    driver: bridge
