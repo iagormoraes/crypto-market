@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import { Role } from '../../roles/role.enum';
+import { RoleEnumValue } from '../../roles/role.enum';
 
 export const UserSchema = new mongoose.Schema({
   name: {
@@ -12,7 +12,8 @@ export const UserSchema = new mongoose.Schema({
     required: true,
   },
   role: {
-    enum: Role,
+    type: String,
+    enum: Object.values(RoleEnumValue),
     required: true,
   },
   password: {
