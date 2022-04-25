@@ -7,10 +7,12 @@ import { UsersModule } from './models/users/users.module';
 
 import { AuthController } from './models/auth/auth.controller';
 import { AuthModule } from './models/auth/auth.module';
+import { DatabaseService } from './models/database/database.service';
+import { DatabaseModule } from './models/database/database.module';
 
 @Module({
-  imports: [UsersModule, AuthModule],
+  imports: [UsersModule, AuthModule, DatabaseModule],
   controllers: [AppController, UsersController, AuthController],
-  providers: [],
+  providers: [DatabaseService],
 })
 export class AppModule {}
