@@ -1,11 +1,4 @@
-import { Reflector } from '@nestjs/core';
-import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-  mixin,
-  Type,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, mixin, Type } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
 import { RequestWithUser } from '../interfaces/request-with-user.interface';
@@ -21,8 +14,6 @@ export const RolesGuard = (...roles: Role[]): Type<CanActivate> => {
 
       const request = context.switchToHttp().getRequest<RequestWithUser>();
       const user = request.user;
-      console.log(roles);
-      console.log(user);
 
       return user && roles.includes(user.role);
     }

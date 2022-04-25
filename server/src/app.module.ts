@@ -1,4 +1,4 @@
-import { APP_GUARD } from '@nestjs/core';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 
@@ -10,9 +10,17 @@ import { AuthModule } from './models/auth/auth.module';
 import { DatabaseService } from './models/database/database.service';
 import { DatabaseModule } from './models/database/database.module';
 
+import { ResponseInterceptor } from './interceptors/response-interceptor.service';
+
 @Module({
   imports: [UsersModule, AuthModule, DatabaseModule],
   controllers: [AppController, UsersController, AuthController],
-  providers: [DatabaseService],
+  providers: [
+    DatabaseService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ResponseInterceptor,
+    },
+  ],
 })
 export class AppModule {}
