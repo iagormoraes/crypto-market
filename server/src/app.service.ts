@@ -20,25 +20,21 @@ export class AppService implements OnApplicationBootstrap {
    * Procedure to seed user of role Admin.
    */
   async onApplicationBootstrap() {
-    let admin = await this.usersService.findOne(
+    const admin = await this.usersService.findOne(
       constants.adminCredentials.email,
     );
 
     if (admin) return;
 
-    admin = (await this.authService.register(
+    await this.authService.register(
       {
         ...constants.adminCredentials,
         name: 'Admin',
       },
       {
         role: Role.Admin,
+        spreadPercentage: 0,
       },
-    )) as User;
-
-    await this.userSpreadService.create({
-      userId: admin.id,
-      spreadPercentage: 0,
-    });
+    );
   }
 }
