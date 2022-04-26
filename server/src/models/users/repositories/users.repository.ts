@@ -2,8 +2,8 @@ import { Inject } from '@nestjs/common';
 import { Model } from 'mongoose';
 
 import { User } from '../interfaces/user.inteface';
-import { CreateUserDto } from '../dtos/create-user.dto';
 import { UserMapper } from '../mappers/user.mapper';
+import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 
 export class UsersRepository {
@@ -24,7 +24,7 @@ export class UsersRepository {
   }
 
   async update(updateUserDto: UpdateUserDto): Promise<User> {
-    const user = await this.userModel.updateOne(
+    const user = await this.userModel.findOneAndUpdate(
       { _id: updateUserDto.id },
       updateUserDto,
       {
@@ -36,6 +36,6 @@ export class UsersRepository {
   }
 
   async delete(id: string): Promise<void> {
-    await this.userModel.findByIdAndRemove({ _id: id });
+    await this.userModel.findOneAndDelete({ _id: id });
   }
 }

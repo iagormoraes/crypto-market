@@ -6,6 +6,7 @@ import { User } from './interfaces/user.inteface';
 
 import { UsersSpreadService } from '../users-spread/users-spread.service';
 import { UserSpreadMapper } from '../users-spread/mappers/user-spread.mapper';
+import { UpdateUserDto } from './dtos/update-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -27,14 +28,26 @@ export class UsersService {
     };
   }
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
+  async create(
+    createUserDto: CreateUserDto,
+    spreadPercentage = 2,
+  ): Promise<User> {
     const user = await this.userRepository.create(createUserDto);
 
     await this.userSpreadService.create({
       userId: user.id,
-      spreadPercentage: 2,
+      spreadPercentage,
     });
 
     return user;
+  }
+
+  async update(updateUserDto: UpdateUserDto): Promise<User> {
+    return this.userRepository.update(updateUserDto);
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.userRepository.delete(id);
+    await this.userSpreadService.deleteByUserId(id);
   }
 }

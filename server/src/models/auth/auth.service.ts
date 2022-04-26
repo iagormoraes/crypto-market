@@ -59,11 +59,14 @@ export class AuthService {
     const saltOrRounds = 10;
     const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
 
-    const createdUser = await this.usersService.create({
-      ...createUserDto,
-      ...extraAttributes,
-      password: hash,
-    });
+    const createdUser = await this.usersService.create(
+      {
+        ...createUserDto,
+        ...extraAttributes,
+        password: hash,
+      },
+      extraAttributes?.spreadPercentage,
+    );
     const { password, ...result } = createdUser;
 
     return result;
