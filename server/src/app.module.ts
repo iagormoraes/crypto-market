@@ -14,9 +14,10 @@ import { DatabaseService } from './models/database/database.service';
 import { DatabaseModule } from './models/database/database.module';
 
 import { ResponseInterceptor } from './interceptors/response-interceptor.service';
+import { UsersSpreadModule } from './models/users-spread/users-spread.module';
 
 @Module({
-  imports: [UsersModule, AuthModule, DatabaseModule],
+  imports: [UsersModule, AuthModule, DatabaseModule, UsersSpreadModule],
   controllers: [AppController, UsersController, AuthController],
   providers: [
     AppService,
