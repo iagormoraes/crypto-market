@@ -11,6 +11,14 @@ export class UserSpreadRepository {
     private userSpreadModel: Model<UserSpread>,
   ) {}
 
+  async findByUserId(userId: string): Promise<UserSpread | null> {
+    const userSpread = await this.userSpreadModel.findOne({ userId });
+
+    if (!userSpread) return null;
+
+    return new UserSpreadMapper().toDomain(userSpread);
+  }
+
   async create(createUserSpreadDto: CreateUserSpreadDto): Promise<UserSpread> {
     const userSpread = await this.userSpreadModel.create(createUserSpreadDto);
 

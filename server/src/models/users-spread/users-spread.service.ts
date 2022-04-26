@@ -7,6 +7,10 @@ import { CreateUserSpreadDto } from './dtos/create-user-spread.dto';
 export class UsersSpreadService {
   constructor(private userSpreadRepository: UserSpreadRepository) {}
 
+  findByUserId(userId: string) {
+    return this.userSpreadRepository.findByUserId(userId);
+  }
+
   create(createUserSpreadDto: CreateUserSpreadDto) {
     return this.userSpreadRepository.create(createUserSpreadDto);
   }

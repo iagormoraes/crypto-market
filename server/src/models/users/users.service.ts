@@ -5,6 +5,7 @@ import { CreateUserDto } from './dtos/create-user.dto';
 import { User } from './interfaces/user.inteface';
 
 import { UsersSpreadService } from '../users-spread/users-spread.service';
+import { UserSpreadMapper } from '../users-spread/mappers/user-spread.mapper';
 
 @Injectable()
 export class UsersService {
@@ -15,6 +16,15 @@ export class UsersService {
 
   async findOne(email: string): Promise<User | null> {
     return this.userRepository.findByEmail(email);
+  }
+
+  async profile(user: User) {
+    const userSpread = await this.userSpreadService.findByUserId(user.id);
+
+    return {
+      user,
+      spread: new UserSpreadMapper().toDto(userSpread),
+    };
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
