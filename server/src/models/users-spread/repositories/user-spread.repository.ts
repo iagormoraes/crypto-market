@@ -24,4 +24,8 @@ export class UserSpreadRepository {
 
     return new UserSpreadMapper().toDomain(userSpread);
   }
+
+  async deleteByUserId(id: string): Promise<void> {
+    await this.userSpreadModel.findOneAndDelete({ userId: id });
+  }
 }

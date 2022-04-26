@@ -14,4 +14,8 @@ export class UsersSpreadService {
   create(createUserSpreadDto: CreateUserSpreadDto) {
     return this.userSpreadRepository.create(createUserSpreadDto);
   }
+
+  deleteByUserId(id: string) {
+    return this.userSpreadRepository.deleteByUserId(id);
+  }
 }
