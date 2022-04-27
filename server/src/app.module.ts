@@ -16,8 +16,17 @@ import { DatabaseModule } from './models/database/database.module';
 import { ResponseInterceptor } from './interceptors/response-interceptor.service';
 import { UsersSpreadModule } from './models/users-spread/users-spread.module';
 
+import { CryptoGateway } from './models/crypto/crypto.gateway';
+import { CryptoModule } from './models/crypto/crypto.module';
+
 @Module({
-  imports: [UsersModule, AuthModule, DatabaseModule, UsersSpreadModule],
+  imports: [
+    UsersModule,
+    AuthModule,
+    DatabaseModule,
+    UsersSpreadModule,
+    CryptoModule,
+  ],
   controllers: [AppController, UsersController, AuthController],
   providers: [
     AppService,
