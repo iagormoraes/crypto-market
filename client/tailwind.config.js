@@ -5,6 +5,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './src/commons/components/**/*.{js,ts,jsx,tsx}',
+    './src/commons/containers/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: {
