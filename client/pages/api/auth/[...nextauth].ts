@@ -25,7 +25,7 @@ export default NextAuth({
         },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         try {
           const { data: response } = await httpClientExternal.request({
             url: '/auth/login',
