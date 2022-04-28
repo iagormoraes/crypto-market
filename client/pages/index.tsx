@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Button from '../src/commons/components/buttons/Button';
 import PageCarousel from '../src/commons/components/PageCarousel';
@@ -56,7 +57,11 @@ const Home: NextPage = () => {
               Sign up today and <strong>start investing</strong>{' '}
               <strong>cryptocurrencies</strong> in minutes. Get started!.
             </p>
-            <Button className="mt-8 self-center md:self-start">Sign Up</Button>
+            <Link href="/register">
+              <Button className="mt-8 self-center md:self-start">
+                Sign Up
+              </Button>
+            </Link>
           </div>
           <div>
             <NoSSR>
@@ -93,9 +98,11 @@ const Home: NextPage = () => {
             })}
           </div>
           <div className="mx-auto mt-8">
-            <Button className="mt-4 self-center md:self-start">
-              Start Now
-            </Button>
+            <Link href="/register">
+              <Button className="mt-4 self-center md:self-start">
+                Start Now
+              </Button>
+            </Link>
           </div>
         </section>
         <section className="container mx-auto h-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 px-2">
@@ -107,9 +114,11 @@ const Home: NextPage = () => {
               Start today with <strong>cryptos</strong> and maximise your
               profits.
             </p>
-            <Button className="mt-8 self-center md:self-start">
-              Start Now
-            </Button>
+            <Link href="/register">
+              <Button className="mt-8 self-center md:self-start">
+                Start Now
+              </Button>
+            </Link>
           </div>
           <div className="w-1/3 md:w-64 aspect-square relative">
             <Image
