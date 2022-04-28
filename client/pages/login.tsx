@@ -9,6 +9,9 @@ import Button from '../src/commons/components/buttons/Button';
 import Input from '../src/commons/components/form/Input';
 import InputError from '../src/commons/components/form/InputError';
 import PageError from '../src/commons/components/errors/PageError';
+import ArrowIcon, {
+  ArrowIconDirection,
+} from '../src/commons/components/icons/ArrowIcon';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -16,7 +19,10 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function Login({ csrfToken }: { csrfToken: string }) {
-  const { error } = useRouter().query;
+  const {
+    back,
+    query: { error },
+  } = useRouter();
 
   const handleSubmit = useCallback((values: Record<string, any>) => {
     signIn('credentials', {
@@ -25,38 +31,56 @@ export default function Login({ csrfToken }: { csrfToken: string }) {
     });
   }, []);
   return (
-    <div className="w-screen h-screen flex justify-center items-start md:items-center">
-      <Formik
-        initialValues={{
-          csrfToken,
-          email: '',
-          password: '',
-        }}
-        validationSchema={LoginSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched }) => (
-          <Form className="flex flex-col rounded bg-blueGray-600 m-2 md:m-0 p-2 w-full md:w-[600px]">
-            <h2 className="text-center text-white text-3xl">Authentication</h2>
-            <PageError error={error} />
-            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-            <Field name="email" placeholder="Email" component={Input} />
-            {errors.email && touched.email ? (
-              <InputError>{errors.email}</InputError>
-            ) : null}
-            <Field
-              name="password"
-              type="password"
-              placeholder="Password"
-              component={Input}
+    <div className="w-full container mx-auto h-screen flex flex-col">
+      <div>
+        <div className="container mx-auto mt-4">
+          <button
+            className="flex items-center text-white fill-white gap-4 group"
+            onClick={back}
+          >
+            <ArrowIcon
+              direction={ArrowIconDirection.LEFT}
+              className="w-8 h-8 group-hover:-translate-x-2 transition-transform"
             />
-            {errors.password && touched.password ? (
-              <InputError>{errors.password}</InputError>
-            ) : null}
-            <Button type="submit">Login</Button>
-          </Form>
-        )}
-      </Formik>
+            <p className="text-lg">Go back</p>
+          </button>
+        </div>
+      </div>
+      <div className="w-full h-full flex justify-center items-start md:items-center">
+        <Formik
+          initialValues={{
+            csrfToken,
+            email: '',
+            password: '',
+          }}
+          validationSchema={LoginSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched }) => (
+            <Form className="flex flex-col rounded bg-blueGray-600 m-2 md:m-0 p-2 w-full md:w-[600px]">
+              <h2 className="text-center text-white text-3xl">
+                Authentication
+              </h2>
+              <PageError error={error} />
+              <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+              <Field name="email" placeholder="Email" component={Input} />
+              {errors.email && touched.email ? (
+                <InputError>{errors.email}</InputError>
+              ) : null}
+              <Field
+                name="password"
+                type="password"
+                placeholder="Password"
+                component={Input}
+              />
+              {errors.password && touched.password ? (
+                <InputError>{errors.password}</InputError>
+              ) : null}
+              <Button type="submit">Login</Button>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 }
