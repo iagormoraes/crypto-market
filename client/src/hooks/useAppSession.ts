@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react';
 import { User } from '../modules/user/interfaces/user.interface';
 
 export const AppSessionState = {
+  Loading: 'loading',
   Authenticated: 'authenticated',
   Unauthenticated: 'unauthenticated',
 };
