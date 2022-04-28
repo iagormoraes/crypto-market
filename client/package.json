@@ -13,6 +13,7 @@
     "autoprefixer": "^10.4.5",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "formik": "^2.2.9",
     "next": "12.1.5",
     "next-auth": "^4.3.4",
     "postcss": "^8.4.12",
@@ -20,6 +21,7 @@
     "react-dom": "18.1.0",
     "swiper": "^8.1.4",
     "three": "^0.139.2",
+    "yup": "^0.32.11",
     "zustand": "^4.0.0-rc.0"
   },
   "devDependencies": {
