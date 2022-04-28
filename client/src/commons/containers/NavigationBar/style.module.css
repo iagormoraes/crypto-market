@@ -6,5 +6,5 @@
 }
 
 .logo {
-    @apply w-12 h-12 relative fill-white;
+    @apply w-12 h-12 relative fill-white shrink-0;
 }
