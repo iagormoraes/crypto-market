@@ -21,14 +21,18 @@ export default function NavigationBar() {
           <>
             <li>
               <Link href="/login" passHref>
-                <Button variant={ButtonVariant.Small}>Login</Button>
+                <a>
+                  <Button variant={ButtonVariant.Small}>Login</Button>
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/register" passHref>
-                <Button variant={ButtonVariant.Small} alt>
-                  Register
-                </Button>
+                <a>
+                  <Button variant={ButtonVariant.Small} alt>
+                    Register
+                  </Button>
+                </a>
               </Link>
             </li>
           </>
@@ -40,9 +44,11 @@ export default function NavigationBar() {
             {session.user?.role === UserRolesEnum.Admin && (
               <li>
                 <Link href="/admin/dashboard" passHref>
-                  <Button variant={ButtonVariant.Small} alt>
-                    Admin
-                  </Button>
+                  <a>
+                    <Button variant={ButtonVariant.Small} alt>
+                      Admin
+                    </Button>
+                  </a>
                 </Link>
               </li>
             )}
