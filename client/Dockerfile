@@ -8,4 +8,4 @@ COPY yarn.lock ./
 
 RUN yarn install
 
-EXPOSE 80
+EXPOSE 3000

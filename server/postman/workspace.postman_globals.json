@@ -3,7 +3,7 @@
 	"values": [
 		{
 			"key": "url",
-			"value": "http://localhost:3000",
+			"value": "http://localhost:3001",
 			"type": "default",
 			"enabled": true
 		},
@@ -15,7 +15,7 @@
 		},
 		{
 			"key": "socket_url",
-			"value": "ws://localhost:3000",
+			"value": "ws://localhost:3001",
 			"type": "default",
 			"enabled": true
 		}
