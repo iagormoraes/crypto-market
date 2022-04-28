@@ -15,13 +15,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"if(pm.response.status !== 200) return",
+									"if(pm.response.code !== 200) return",
 									"",
-									"pm.globals.set(\"access_token\", pm.response.json().data.access_token);",
+									"pm.globals.set(\"access_token\", pm.response.json().data.token.access_token);",
 									"",
 									"pm.test(\"Expect to receive acess token on login\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.data.access_token).to.be.not(undefined);",
+									"    pm.expect(jsonData.token.access_token).to.be.not(undefined);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -33,7 +33,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"changeme\"\n}",
+							"raw": "{\n    \"email\": \"johndoe@example.com\",\n    \"password\": \"changeme\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -87,20 +87,24 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "323"
+									"value": "480"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"143-slmX4D9ydnIxwBHUONzwN1E1wMM\""
+									"value": "W/\"1e0-NZOQZ0HPrlY/Sh7sek8GWKA4yWY\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 26 Apr 2022 17:13:22 GMT"
+									"value": "Thu, 28 Apr 2022 12:43:07 GMT"
 								},
 								{
 									"key": "Connection",
@@ -112,7 +116,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjgwNDk0ODBjM2E4YjYwZjA4YTFmYiIsImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNjUwOTkzMjAyLCJleHAiOjE2NTA5OTMyNjJ9.p9sCMiYDS5AslvSGC6EhSBC-4T1neRXANiifIt5SV_w\",\n        \"access_token_expiration\": \"2022-04-26T17:14:22.000Z\"\n    }\n}"
+							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"profile\": {\n            \"user\": {\n                \"id\": \"626a8bacceb4f5e50fa2a762\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        },\n        \"token\": {\n            \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE4YmFjY2ViNGY1ZTUwZmEyYTc2MiIsImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNjUxMTQ5Nzg3LCJleHAiOjE2NTYzMzM3ODd9.GDZVwvtrjxFFHA15oG11t88az4MyEN_X9Id5t0C4g1c\",\n            \"access_token_expiration\": \"2022-06-27T12:43:07.000Z\"\n        }\n    }\n}"
 						}
 					]
 				},
@@ -177,20 +181,24 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "117"
+									"value": "480"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"75-Oas595kkUIwn7+XD1R78JyXp98c\""
+									"value": "W/\"1e0-csFMNyj3V9t9FYU+SUDEQe80hN4\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 26 Apr 2022 17:21:24 GMT"
+									"value": "Thu, 28 Apr 2022 12:42:20 GMT"
 								},
 								{
 									"key": "Connection",
@@ -202,7 +210,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": 201,\n    \"data\": {\n        \"id\": \"62682a14ea2df516759a13dd\",\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"role\": \"User\"\n    }\n}"
+							"body": "{\n    \"status\": 201,\n    \"data\": {\n        \"profile\": {\n            \"user\": {\n                \"id\": \"626a8bacceb4f5e50fa2a762\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        },\n        \"token\": {\n            \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE4YmFjY2ViNGY1ZTUwZmEyYTc2MiIsImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNjUxMTQ5NzQwLCJleHAiOjE2NTYzMzM3NDB9.Up6QOr2bBv3pL4YJj3NVCnwflmK1kyQqGg2uHfT4wyg\",\n            \"access_token_expiration\": \"2022-06-27T12:42:20.000Z\"\n        }\n    }\n}"
 						}
 					]
 				}
