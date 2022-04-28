@@ -1,3 +1,8 @@
 import { HttpClient } from './http-client';
 
-export const httpClientExternal = new HttpClient('http://localhost:3000');
+const url =
+  typeof window === 'undefined'
+    ? 'http://crypto-market-node:3001'
+    : 'http://localhost:3001';
+
+export const httpClientExternal = new HttpClient(url);
