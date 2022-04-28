@@ -21,9 +21,10 @@ export class UsersService {
 
   async profile(user: User) {
     const userSpread = await this.userSpreadService.findByUserId(user.id);
+    const { password, ...rest } = user as User;
 
     return {
-      user,
+      user: rest,
       spread: new UserSpreadMapper().toDto(userSpread),
     };
   }

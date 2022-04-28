@@ -30,7 +30,6 @@ export class UsersController {
   @Put('admin/users/:id')
   @UseGuards(RolesGuard(Role.Admin))
   update(@Body() updateUserDto: UpdateUserDto, @Param('id') id) {
-    console.log(updateUserDto);
     return this.usersService.update({ ...updateUserDto, id });
   }
 

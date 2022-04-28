@@ -38,6 +38,47 @@ export class AuthService {
   }
 
   async login(user: User) {
+    const token = this.generateAccessToken(user);
+    const profile = await this.usersService.profile(user);
+
+    return {
+      profile,
+      token,
+    };
+  }
+
+  async register(
+    createUserDto: CreateUserDto,
+    extraAttributes?: Record<string, any>,
+  ) {
+    let user = await this.usersService.findOne(createUserDto.email);
+
+    if (user) throw new BadRequestException();
+
+    const saltOrRounds = 10;
+    const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
+
+    user = await this.usersService.create(
+      {
+        ...createUserDto,
+        ...extraAttributes,
+        password: hash,
+      },
+      extraAttributes?.spreadPercentage,
+    );
+
+    const { password, ...restUser } = user;
+
+    const token = this.generateAccessToken(restUser as User);
+    const profile = await this.usersService.profile(restUser as User);
+
+    return {
+      profile,
+      token,
+    };
+  }
+
+  generateAccessToken(user: User) {
     const payload = { id: user.id, email: user.email, role: user.role };
     const token = this.jwtService.sign(payload);
     const { exp } = this.jwtService.verify(token);
@@ -46,39 +87,5 @@ export class AuthService {
       access_token: token,
       access_token_expiration: new Date(exp * 1000).toISOString(),
     };
-  }
-
-  async register(
-    createUserDto: CreateUserDto,
-    extraAttributes?: Record<string, any>,
-  ) {
-    const user = await this.usersService.findOne(createUserDto.email);
-
-    if (user) throw new BadRequestException();
-
-    const saltOrRounds = 10;
-    const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
-
-    const createdUser = await this.usersService.create(
-      {
-        ...createUserDto,
-        ...extraAttributes,
-        password: hash,
-      },
-      extraAttributes?.spreadPercentage,
-    );
-    const { password, ...result } = createdUser;
-
-    return result;
-  }
-
-  async createAccessToken(refreshToken: string) {
-    const decoded = this.jwtService.decode(refreshToken) as Record<string, any>;
-
-    if (!decoded) throw new BadRequestException();
-
-    const user = await this.usersService.findOne(decoded.email);
-
-    if (!user) throw new HttpException('Not found', HttpStatus.NOT_FOUND);
   }
 }
