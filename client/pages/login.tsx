@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 import { NextPageContext } from 'next';
-import { getCsrfToken, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { getCsrfToken, signIn } from 'next-auth/react';
+import { getToken, GetTokenParams } from 'next-auth/jwt';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -86,6 +87,16 @@ export default function Login({ csrfToken }: { csrfToken: string }) {
 }
 
 export async function getServerSideProps(context: NextPageContext) {
+  const session = await getToken(context as unknown as GetTokenParams);
+
+  if (session)
+    return {
+      redirect: {
+        destination: '/',
+      },
+      props: {},
+    };
+
   return {
     props: {
       csrfToken: await getCsrfToken(context),
