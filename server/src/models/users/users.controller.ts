@@ -27,6 +27,12 @@ export class UsersController {
     return this.usersService.profile(req.user);
   }
 
+  @Get('admin/users')
+  @UseGuards(RolesGuard(Role.Admin))
+  index() {
+    return this.usersService.index();
+  }
+
   @Put('admin/users/:id')
   @UseGuards(RolesGuard(Role.Admin))
   update(@Body() updateUserDto: UpdateUserDto, @Param('id') id) {

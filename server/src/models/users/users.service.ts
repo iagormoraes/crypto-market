@@ -29,6 +29,10 @@ export class UsersService {
     };
   }
 
+  async index() {
+    return this.userRepository.findAll();
+  }
+
   async create(
     createUserDto: CreateUserDto,
     spreadPercentage = 2,

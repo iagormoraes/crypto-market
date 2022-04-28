@@ -6,8 +6,20 @@ import { UserMapper } from '../mappers/user.mapper';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 
+import { RoleEnumValue } from '../../roles/role.enum';
+
 export class UsersRepository {
   constructor(@Inject('USER_MODEL') private readonly userModel: Model<User>) {}
+
+  async findAll(): Promise<User[]> {
+    const users = await this.userModel.find({ role: RoleEnumValue.User });
+
+    return users.map((user) => {
+      const { password, ...result } = new UserMapper().toDomain(user);
+
+      return result as User;
+    });
+  }
 
   async findByEmail(email: string): Promise<User | null> {
     const user = await this.userModel.findOne({ email });
