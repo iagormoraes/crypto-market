@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { CryptoAsset } from '../modules/crypto/interfaces/asset.interface';
-
-import { WebsocketClientExternal } from '../lib/websocket-client/websocket-client-external';
 import { CryptoMapper } from '../modules/crypto/mappers/crypto-mapper';
 
+import { WebsocketClientExternal } from '../lib/websocket-client/websocket-client-external';
+
+import { useStore } from '../store/crypto/asset.slice';
+
 export default function useCryptoWebsocket(spreadPercentage: number) {
-  const [cryptoHistory, setCryptoHistory] = useState<CryptoAsset[]>([]);
+  const { cryptoHistory, add } = useStore();
 
   useEffect(() => {
     const websocket = new WebsocketClientExternal();
@@ -21,15 +22,10 @@ export default function useCryptoWebsocket(spreadPercentage: number) {
       const eventMessage = JSON.parse(message.data);
 
       if (eventMessage.event === 'OnTicker') {
-        setCryptoHistory((prev) =>
-          [
-            new CryptoMapper().toDomain(eventMessage.data, spreadPercentage),
-            ...prev,
-          ].slice(0, 100),
-        );
+        add(new CryptoMapper().toDomain(eventMessage.data, spreadPercentage));
       }
     });
-  }, [spreadPercentage]);
+  }, [add, spreadPercentage]);
 
   return cryptoHistory;
 }
