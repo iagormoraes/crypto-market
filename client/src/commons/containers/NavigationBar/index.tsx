@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
@@ -6,9 +7,61 @@ import styles from './style.module.css';
 import Button, { ButtonVariant } from '../../components/buttons/Button';
 
 import useAppSession, { AppSessionState } from '../../../hooks/useAppSession';
+import { UserRolesEnum } from '../../../modules/user/interfaces/user-roles.interface';
 
 export default function NavigationBar() {
   const { status, session } = useAppSession();
+
+  const renderOptions = useCallback(() => {
+    switch (status) {
+      case AppSessionState.Loading:
+        return null;
+      case AppSessionState.Unauthenticated:
+        return (
+          <>
+            <li>
+              <Link href="/login" passHref>
+                <Button variant={ButtonVariant.Small}>Login</Button>
+              </Link>
+            </li>
+            <li>
+              <Link href="/register" passHref>
+                <Button variant={ButtonVariant.Small} alt>
+                  Register
+                </Button>
+              </Link>
+            </li>
+          </>
+        );
+
+      case AppSessionState.Authenticated:
+        return (
+          <>
+            {session.user?.role === UserRolesEnum.Admin && (
+              <li>
+                <Link href="/admin/dashboard" passHref>
+                  <Button variant={ButtonVariant.Small} alt>
+                    Admin
+                  </Button>
+                </Link>
+              </li>
+            )}
+            <li>
+              <Button
+                variant={ButtonVariant.Small}
+                alt
+                onClick={() => signOut({ redirect: false })}
+              >
+                Logout
+              </Button>
+            </li>
+          </>
+        );
+
+      default:
+        return null;
+    }
+  }, [status, session]);
 
   return (
     <nav className={styles.nav}>
@@ -21,37 +74,17 @@ export default function NavigationBar() {
             layout="fill"
           />
         </div>
-        <h1 className="ml-2 text-white text-lg font-bold">Crypto Market</h1>
+        <h1 className="ml-2 text-white text-lg font-bold hidden md:block">
+          Crypto Market
+        </h1>
         <nav className="ml-auto">
           <ul className="flex items-center gap-4">
-            {status === AppSessionState.Unauthenticated && (
-              <li>
-                <Link href="/login" passHref>
-                  <Button variant={ButtonVariant.Small}>Login</Button>
-                </Link>
-              </li>
+            {session?.user?.name && (
+              <span className="text-white mr-4 invisible md:visible">
+                Hello, <strong>{session.user.name}</strong>
+              </span>
             )}
-            {status === AppSessionState.Unauthenticated && (
-              <li>
-                <Link href="/register" passHref>
-                  <Button variant={ButtonVariant.Small} alt>
-                    Register
-                  </Button>
-                </Link>
-              </li>
-            )}
-
-            {status === AppSessionState.Authenticated && (
-              <li>
-                <Button
-                  variant={ButtonVariant.Small}
-                  alt
-                  onClick={() => signOut({ redirect: false })}
-                >
-                  Logout
-                </Button>
-              </li>
-            )}
+            {renderOptions()}
           </ul>
         </nav>
       </div>
