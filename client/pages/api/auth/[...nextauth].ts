@@ -6,7 +6,7 @@ import { LoginUserDto } from '../../../src/modules/user/dtos/login-user.dto';
 import { UserMapper } from '../../../src/modules/user/mappers/user.mapper';
 
 export default NextAuth({
-  secret: 'some secret',
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/login',
     error: '/login',
