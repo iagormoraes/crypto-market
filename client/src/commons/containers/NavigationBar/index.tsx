@@ -72,22 +72,26 @@ export default function NavigationBar() {
       default:
         return null;
     }
-  }, [status, session]);
+  }, [status, session, push]);
 
   return (
     <nav className={styles.nav}>
       <div className="container m-auto flex items-center px-2">
-        <div className={styles.logo}>
-          <Image
-            className="w-full h-full"
-            src="/logo.svg"
-            alt="Crypto Market logo"
-            layout="fill"
-          />
-        </div>
-        <h1 className="ml-2 text-white text-lg font-bold hidden md:block">
-          Crypto Market
-        </h1>
+        <Link href="/" shallow={false}>
+          <a className="flex items-center">
+            <div className={styles.logo}>
+              <Image
+                className="w-full h-full"
+                src="/logo.svg"
+                alt="Crypto Market logo"
+                layout="fill"
+              />
+            </div>
+            <h1 className="ml-2 text-white text-lg font-bold hidden md:block">
+              Crypto Market
+            </h1>
+          </a>
+        </Link>
         <nav className="ml-auto">
           <ul className="flex items-center gap-4">
             {session?.user?.name && (
