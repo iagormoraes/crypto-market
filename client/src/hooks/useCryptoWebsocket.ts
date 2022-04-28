@@ -21,10 +21,12 @@ export default function useCryptoWebsocket(spreadPercentage: number) {
       const eventMessage = JSON.parse(message.data);
 
       if (eventMessage.event === 'OnTicker') {
-        setCryptoHistory((prev) => [
-          new CryptoMapper().toDomain(eventMessage.data, spreadPercentage),
-          ...prev,
-        ]);
+        setCryptoHistory((prev) =>
+          [
+            new CryptoMapper().toDomain(eventMessage.data, spreadPercentage),
+            ...prev,
+          ].slice(0, 100),
+        );
       }
     });
   }, [spreadPercentage]);
