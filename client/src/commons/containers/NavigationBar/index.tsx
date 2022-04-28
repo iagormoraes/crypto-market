@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
 import styles from './style.module.css';
 
@@ -10,6 +11,7 @@ import useAppSession, { AppSessionState } from '../../../hooks/useAppSession';
 import { UserRolesEnum } from '../../../modules/user/interfaces/user-roles.interface';
 
 export default function NavigationBar() {
+  const { push } = useRouter();
   const { status, session } = useAppSession();
 
   const renderOptions = useCallback(() => {
@@ -56,7 +58,10 @@ export default function NavigationBar() {
               <Button
                 variant={ButtonVariant.Small}
                 alt
-                onClick={() => signOut({ redirect: false })}
+                onClick={() => {
+                  push('/');
+                  signOut({ redirect: false });
+                }}
               >
                 Logout
               </Button>
