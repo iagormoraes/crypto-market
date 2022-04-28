@@ -1,0 +1,38 @@
+.btn {
+    @apply relative bg-black font-bold text-white shadow-xl transition-all duration-500;
+    @apply hover:bg-white hover:text-black;
+}
+
+.btn::before,
+.btn::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+
+    @apply bg-yellow-300 transition-all duration-500;
+
+    mix-blend-mode: multiply;
+}
+
+.btn::after {
+    left: unset;
+}
+
+.btn:hover::before,
+.btn:hover::after {
+    width: 50%;
+}
+
+.btnRegular {
+    @apply px-4 py-1 md:px-8 md:py-2 text-lg md:text-2xl;
+}
+
+.btnSmall {
+    @apply px-4 py-1 text-xl;
+}
+
+.btnAlt {
+    @apply bg-white text-black;
+}
