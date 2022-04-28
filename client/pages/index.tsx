@@ -1,7 +1,8 @@
-import type { NextPage } from 'next';
+import type { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getToken, GetTokenParams } from 'next-auth/jwt';
 
 import Button from '../src/commons/components/buttons/Button';
 import PageCarousel from '../src/commons/components/PageCarousel';
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
   return (
     <main>
       <Head>
-        <title>Crypto Market</title>
+        <title>Home | Crypto Market</title>
       </Head>
       <NavigationBar />
       <PageCarousel>
@@ -135,3 +136,19 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getToken(context as unknown as GetTokenParams);
+
+  if (session)
+    return {
+      redirect: {
+        destination: '/market',
+      },
+      props: {},
+    };
+
+  return {
+    props: {},
+  };
+}

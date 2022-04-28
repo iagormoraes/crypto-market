@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { NextPageContext } from 'next';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { getCsrfToken, signIn } from 'next-auth/react';
 import { getToken, GetTokenParams } from 'next-auth/jwt';
 import { Field, Form, Formik } from 'formik';
@@ -32,57 +33,66 @@ export default function Login({ csrfToken }: { csrfToken: string }) {
     });
   }, []);
   return (
-    <div className="w-full container mx-auto h-screen flex flex-col">
-      <div>
-        <div className="container mx-auto mt-4">
-          <button
-            className="flex items-center text-white fill-white gap-4 group"
-            onClick={back}
+    <main>
+      <Head>
+        <title>Login | Crypto Market</title>
+      </Head>
+      <div className="w-full container mx-auto h-screen flex flex-col">
+        <div>
+          <div className="container mx-auto mt-4">
+            <button
+              className="flex items-center text-white fill-white gap-4 group"
+              onClick={back}
+            >
+              <ArrowIcon
+                direction={ArrowIconDirection.LEFT}
+                className="w-8 h-8 group-hover:-translate-x-2 transition-transform"
+              />
+              <p className="text-lg">Go back</p>
+            </button>
+          </div>
+        </div>
+        <div className="w-full h-full flex justify-center items-start md:items-center">
+          <Formik
+            initialValues={{
+              csrfToken,
+              email: '',
+              password: '',
+            }}
+            validationSchema={LoginSchema}
+            onSubmit={handleSubmit}
           >
-            <ArrowIcon
-              direction={ArrowIconDirection.LEFT}
-              className="w-8 h-8 group-hover:-translate-x-2 transition-transform"
-            />
-            <p className="text-lg">Go back</p>
-          </button>
+            {({ errors, touched }) => (
+              <Form className="flex flex-col rounded bg-blueGray-600 m-2 md:m-0 p-2 w-full md:w-[600px]">
+                <h2 className="text-center text-white text-3xl">
+                  Authentication
+                </h2>
+                <PageError error={error} />
+                <input
+                  name="csrfToken"
+                  type="hidden"
+                  defaultValue={csrfToken}
+                />
+                <Field name="email" placeholder="Email" component={Input} />
+                {errors.email && touched.email ? (
+                  <InputError>{errors.email}</InputError>
+                ) : null}
+                <Field
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  component={Input}
+                />
+                {errors.password && touched.password ? (
+                  <InputError>{errors.password}</InputError>
+                ) : null}
+                <Button type="submit">Login</Button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
-      <div className="w-full h-full flex justify-center items-start md:items-center">
-        <Formik
-          initialValues={{
-            csrfToken,
-            email: '',
-            password: '',
-          }}
-          validationSchema={LoginSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ errors, touched }) => (
-            <Form className="flex flex-col rounded bg-blueGray-600 m-2 md:m-0 p-2 w-full md:w-[600px]">
-              <h2 className="text-center text-white text-3xl">
-                Authentication
-              </h2>
-              <PageError error={error} />
-              <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-              <Field name="email" placeholder="Email" component={Input} />
-              {errors.email && touched.email ? (
-                <InputError>{errors.email}</InputError>
-              ) : null}
-              <Field
-                name="password"
-                type="password"
-                placeholder="Password"
-                component={Input}
-              />
-              {errors.password && touched.password ? (
-                <InputError>{errors.password}</InputError>
-              ) : null}
-              <Button type="submit">Login</Button>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </div>
+    </main>
   );
 }
 
