@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { forwardRef, ButtonHTMLAttributes, Ref } from 'react';
 import classnames from 'classnames';
 import styles from './style.module.css';
 
@@ -12,13 +12,16 @@ export enum ButtonVariant {
   Small = 'Small',
 }
 
-export default function Button({
-  variant = ButtonVariant.Regular,
-  alt,
-  children,
-  className,
-  ...props
-}: Props) {
+function ButtonComponent(
+  {
+    variant = ButtonVariant.Regular,
+    alt,
+    children,
+    className,
+    ...props
+  }: Props,
+  ref: Ref<HTMLButtonElement>,
+) {
   const variants = {
     [ButtonVariant.Regular]: styles.btnRegular,
     [ButtonVariant.Small]: styles.btnSmall,
@@ -26,6 +29,7 @@ export default function Button({
 
   return (
     <button
+      ref={ref}
       className={classnames(
         styles.btn,
         variants[variant],
@@ -38,3 +42,7 @@ export default function Button({
     </button>
   );
 }
+
+const Button = forwardRef(ButtonComponent);
+
+export default Button;
