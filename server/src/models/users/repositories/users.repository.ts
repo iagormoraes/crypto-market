@@ -43,8 +43,9 @@ export class UsersRepository {
         new: true,
       },
     );
+    const { password, ...result } = new UserMapper().toDomain(user);
 
-    return new UserMapper().toDomain(user);
+    return result as User;
   }
 
   async delete(id: string): Promise<void> {
