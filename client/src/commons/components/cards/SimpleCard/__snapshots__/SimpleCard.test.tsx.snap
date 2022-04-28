@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SimpleCard/> matches snapshot 1`] = `
+<div>
+  <div
+    class="rounded shadow-xl w-full md:w-48 overflow-hidden"
+  >
+    <div>
+      <h3
+        class="text-center text-white font-bold p-2 bg-yellow-500"
+      >
+        title
+      </h3>
+      <div
+        class="p-2"
+      >
+        children
+      </div>
+    </div>
+  </div>
+</div>
+`;
