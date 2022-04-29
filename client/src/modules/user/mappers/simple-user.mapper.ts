@@ -1,7 +1,7 @@
 import { SimpleUser } from '../interfaces/user.interface';
 
 export class SimpleUserMapper {
-  toDomain(dto: string): SimpleUser {
+  toDomain(dto: any): SimpleUser {
     return {
       id: dto.user.id,
       name: dto.user.name,
