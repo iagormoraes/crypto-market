@@ -15,4 +15,5 @@ export interface SimpleUser {
   name: string;
   email: string;
   role: UserRolesEnum;
+  spread: number;
 }

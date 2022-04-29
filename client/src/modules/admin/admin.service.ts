@@ -43,4 +43,17 @@ export class AdminService {
       },
     });
   }
+
+  async updateUserSpread(id: string, spread: number) {
+    const { data: response } = await httpClientExternal.request({
+      url: `/admin/users/${id}/spread`,
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${this.session.accessToken}`,
+      },
+      data: { spread },
+    });
+
+    return new SimpleUserMapper().toDomain(response.data);
+  }
 }

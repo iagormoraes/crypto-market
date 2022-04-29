@@ -22,6 +22,7 @@ const UserSchema = Yup.object().shape({
   name: Yup.string().min(2).max(256).required(),
   email: Yup.string().email().required(),
   role: Yup.mixed().oneOf([UserRolesEnum.User, UserRolesEnum.Admin]).required(),
+  spread: Yup.number().min(0).max(100).required(),
 });
 
 interface PageProps {
@@ -34,14 +35,17 @@ export default function Dashboard({ users, sessionProp: session }: PageProps) {
 
   const handleSubmit = useCallback(
     async (id: string, values: Record<string, any>) => {
-      const updatedUser = await new AdminService(session).updateUser(
+      const adminService = await new AdminService(session);
+      const updatedUser = await adminService.updateUser(
         id,
         values as UpdateUserDto,
       );
+      await adminService.updateUserSpread(id, Number(values.spread));
 
       setUsersState((prev) => {
         return prev.map((item) => {
-          if (item.id === updatedUser.id) return updatedUser;
+          if (item.id === updatedUser.id)
+            return { ...updatedUser, spread: values.spread };
 
           return item;
         });
@@ -71,7 +75,7 @@ export default function Dashboard({ users, sessionProp: session }: PageProps) {
         <title>Admin dashboard | Crypto Market</title>
       </Head>
       <NavigationBar />
-      <div className="container mx-auto px-2 pt-20">
+      <div className="container mx-auto px-2 py-20">
         <h2 className="font-bold text-2xl md:text-4xl text-white mb-8">
           Users management
         </h2>
