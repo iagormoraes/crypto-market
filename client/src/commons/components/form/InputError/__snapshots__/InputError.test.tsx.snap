@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputError/> matches snapshot 1`] = `
+<div>
+  <div
+    class="text-red-600 font-bold mb-2"
+  >
+    Error
+  </div>
+</div>
+`;
