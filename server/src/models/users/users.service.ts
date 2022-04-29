@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 
 import { UsersRepository } from './repositories/users.repository';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { UpdateUserDto } from './dtos/update-user.dto';
 import { User } from './interfaces/user.inteface';
 
 import { UsersSpreadService } from '../users-spread/users-spread.service';
 import { UserSpreadMapper } from '../users-spread/mappers/user-spread.mapper';
-import { UpdateUserDto } from './dtos/update-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -30,25 +30,46 @@ export class UsersService {
   }
 
   async index() {
-    return this.userRepository.findAll();
+    const users = await this.userRepository.findAll();
+
+    return Promise.all(
+      users.map(async (user) => {
+        const userSpread = await this.userSpreadService.findByUserId(user.id);
+
+        return {
+          user,
+          spread: new UserSpreadMapper().toDto(userSpread),
+        };
+      }),
+    );
   }
 
-  async create(
-    createUserDto: CreateUserDto,
-    spreadPercentage = 2,
-  ): Promise<User> {
-    const user = await this.userRepository.create(createUserDto);
+  async create(createUserDto: CreateUserDto, spreadPercentage = 2) {
+    const { password, ...user } = (await this.userRepository.create(
+      createUserDto,
+    )) as User;
 
-    await this.userSpreadService.create({
+    const userSpread = await this.userSpreadService.create({
       userId: user.id,
       spreadPercentage,
     });
 
-    return user;
+    return {
+      user,
+      spread: new UserSpreadMapper().toDto(userSpread),
+    };
   }
 
-  async update(updateUserDto: UpdateUserDto): Promise<User> {
-    return this.userRepository.update(updateUserDto);
+  async update(updateUserDto: UpdateUserDto) {
+    const { password, ...user } = (await this.userRepository.update(
+      updateUserDto,
+    )) as User;
+    const userSpread = await this.userSpreadService.findByUserId(user.id);
+
+    return {
+      user,
+      spread: new UserSpreadMapper().toDto(userSpread),
+    };
   }
 
   async delete(id: string): Promise<void> {

@@ -1,9 +1,4 @@
-import {
-  BadRequestException,
-  HttpException,
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 
@@ -58,19 +53,19 @@ export class AuthService {
     const saltOrRounds = 10;
     const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
 
-    user = await this.usersService.create(
-      {
-        ...createUserDto,
-        ...extraAttributes,
-        password: hash,
-      },
-      extraAttributes?.spreadPercentage,
-    );
+    user = (
+      await this.usersService.create(
+        {
+          ...createUserDto,
+          ...extraAttributes,
+          password: hash,
+        },
+        extraAttributes?.spreadPercentage,
+      )
+    ).user as User;
 
-    const { password, ...restUser } = user;
-
-    const token = this.generateAccessToken(restUser as User);
-    const profile = await this.usersService.profile(restUser as User);
+    const token = this.generateAccessToken(user as User);
+    const profile = await this.usersService.profile(user as User);
 
     return {
       profile,
