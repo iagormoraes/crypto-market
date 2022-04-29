@@ -72,7 +72,7 @@ export default function Dashboard({ users, sessionProp: session }: PageProps) {
       </Head>
       <NavigationBar />
       <div className="container mx-auto px-2 pt-20">
-        <h2 className="font-bold text-2xl md:text-4xl text-white mb-4">
+        <h2 className="font-bold text-2xl md:text-4xl text-white mb-8">
           Users management
         </h2>
         <div className=" flex flex-col gap-4">
@@ -86,31 +86,34 @@ export default function Dashboard({ users, sessionProp: session }: PageProps) {
                 {({ errors, touched }) => (
                   <>
                     <Form>
-                      <div className="flex flex-wrap gap-2">
-                        {Object.keys(user).map((key) => (
-                          <div key={key} className="flex-1">
-                            <Field
-                              name={key}
-                              placeholder={key}
-                              component={Input}
-                            />
-                            {errors[key] && touched[key] ? (
-                              <InputError>{errors[key]}</InputError>
-                            ) : null}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="ml-auto flex justify-end gap-4">
-                        <Button
-                          variant={ButtonVariant.Small}
-                          alt
-                          onClick={() => handleDelete(id)}
-                        >
-                          Delete
-                        </Button>
-                        <Button variant={ButtonVariant.Small} type="submit">
-                          Update
-                        </Button>
+                      <div>
+                        <p className="text-white font-bold">ID: {id}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {Object.keys(user).map((key) => (
+                            <div key={key} className="flex-1">
+                              <Field
+                                name={key}
+                                placeholder={key}
+                                component={Input}
+                              />
+                              {errors[key] && touched[key] ? (
+                                <InputError>{errors[key]}</InputError>
+                              ) : null}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="ml-auto flex justify-end gap-4">
+                          <Button
+                            variant={ButtonVariant.Small}
+                            alt
+                            onClick={() => handleDelete(id)}
+                          >
+                            Delete
+                          </Button>
+                          <Button variant={ButtonVariant.Small} type="submit">
+                            Update
+                          </Button>
+                        </div>
                       </div>
                     </Form>
                   </>
