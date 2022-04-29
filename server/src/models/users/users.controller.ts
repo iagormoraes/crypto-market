@@ -16,6 +16,7 @@ import { JwtAuthGuard, RolesGuard } from '../auth/guards';
 
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dtos/update-user.dto';
+import { UpdateUserSpreadDto } from '../users-spread/dtos/update-user-spread.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller()
@@ -44,5 +45,14 @@ export class UsersController {
   @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id') id: string) {
     return this.usersService.delete(id);
+  }
+
+  @Put('admin/users/:id/spread')
+  @UseGuards(RolesGuard(Role.Admin))
+  updateSpread(
+    @Body() updateUserSpreadDto: UpdateUserSpreadDto,
+    @Param('id') id,
+  ) {
+    return this.usersService.updateSpread(id, updateUserSpreadDto);
   }
 }

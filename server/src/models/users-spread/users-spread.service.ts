@@ -15,6 +15,10 @@ export class UsersSpreadService {
     return this.userSpreadRepository.create(createUserSpreadDto);
   }
 
+  updateByUserId(id: string, spread: number) {
+    return this.userSpreadRepository.updateByUserId(id, spread);
+  }
+
   deleteByUserId(id: string) {
     return this.userSpreadRepository.deleteByUserId(id);
   }

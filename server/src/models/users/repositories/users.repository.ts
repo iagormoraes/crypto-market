@@ -29,6 +29,14 @@ export class UsersRepository {
     return new UserMapper().toDomain(user);
   }
 
+  async findById(id: string): Promise<User | null> {
+    const user = await this.userModel.findOne({ _id: id });
+
+    if (!user) return null;
+
+    return new UserMapper().toDomain(user);
+  }
+
   async create(userDto: CreateUserDto): Promise<User> {
     const user = await this.userModel.create(userDto);
 
