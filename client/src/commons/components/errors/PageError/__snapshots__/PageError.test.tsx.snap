@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageError/> matches snapshot 1`] = `
+<div>
+  <p
+    class="my-4 text-red-500 font-bold text-center"
+  >
+    Sorry, we couldn't find the requested resource, try again.
+  </p>
+</div>
+`;
