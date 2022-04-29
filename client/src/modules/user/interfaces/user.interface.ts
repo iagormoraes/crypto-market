@@ -9,3 +9,10 @@ export interface User {
     spreadPercentage: number;
   };
 }
+
+export interface SimpleUser {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRolesEnum;
+}

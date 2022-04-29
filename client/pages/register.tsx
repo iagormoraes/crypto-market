@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
