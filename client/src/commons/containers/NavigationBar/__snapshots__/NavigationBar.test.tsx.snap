@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NavigationBar/> matches snapshot 1`] = `
+exports[`<NavigationBar/> matches snapshot on loading 1`] = `
 <div>
   <nav
     class="nav"
@@ -8,51 +8,39 @@ exports[`<NavigationBar/> matches snapshot 1`] = `
     <div
       class="container m-auto flex items-center px-2"
     >
-      <div
-        class="logo"
+      <a
+        class="flex items-center"
+        href="/"
       >
-        <span
-          style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
+        <div
+          class="logo"
         >
-          <img
-            alt="Crypto Market logo"
-            class="w-full h-full"
-            data-nimg="fill"
-            decoding="async"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-          />
-          <noscript />
-        </span>
-      </div>
-      <h1
-        class="ml-2 text-white text-lg font-bold"
-      >
-        Crypto Market
-      </h1>
+          <span
+            style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
+          >
+            <img
+              alt="Crypto Market logo"
+              class="w-full h-full"
+              data-nimg="fill"
+              decoding="async"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+            />
+            <noscript />
+          </span>
+        </div>
+        <h1
+          class="ml-2 text-white text-lg font-bold hidden md:block"
+        >
+          Crypto Market
+        </h1>
+      </a>
       <nav
         class="ml-auto"
       >
         <ul
           class="flex items-center gap-4"
-        >
-          <li>
-            <button
-              class="btn btnSmall"
-              href="/login"
-            >
-              Login
-            </button>
-          </li>
-          <li>
-            <button
-              class="btn btnSmall btnAlt"
-              href="/register"
-            >
-              Register
-            </button>
-          </li>
-        </ul>
+        />
       </nav>
     </div>
   </nav>
