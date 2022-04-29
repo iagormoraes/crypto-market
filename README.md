@@ -24,7 +24,12 @@ It will build the following containers:
 - crypto-market-node
 - crypto-market-db
 
-By default, every startup time, the container `crypto-market-node` will seed the user to create an admin role user.
+By default, every startup time, the container `crypto-market-node` will seed the user to create an admin role user, with the default credentials of:
+
+```
+email: admin@example.com
+password: changeme
+```
 
 ### Routes
 
