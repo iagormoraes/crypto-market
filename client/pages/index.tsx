@@ -58,7 +58,7 @@ const Home: NextPage = () => {
               Sign up today and <strong>start investing</strong>{' '}
               <strong>cryptocurrencies</strong> in minutes. Get started!.
             </p>
-            <Link href="/register">
+            <Link href="/register" passHref>
               <Button className="mt-8 self-center md:self-start">
                 Sign Up
               </Button>
@@ -99,7 +99,7 @@ const Home: NextPage = () => {
             })}
           </div>
           <div className="mx-auto mt-8">
-            <Link href="/register">
+            <Link href="/register" passHref>
               <Button className="mt-4 self-center md:self-start">
                 Start Now
               </Button>
@@ -115,7 +115,7 @@ const Home: NextPage = () => {
               Start today with <strong>cryptos</strong> and maximise your
               profits.
             </p>
-            <Link href="/register">
+            <Link href="/register" passHref>
               <Button className="mt-8 self-center md:self-start">
                 Start Now
               </Button>
