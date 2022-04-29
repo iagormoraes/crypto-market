@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "yarn jest --watch"
+    "test": "yarn jest src/"
   },
   "dependencies": {
     "autoprefixer": "^10.4.5",
