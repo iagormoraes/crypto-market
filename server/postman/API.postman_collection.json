@@ -60,7 +60,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"johndoe@example.com\",\n    \"password\": \"changeme\"\n}",
+									"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"changeme\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -96,15 +96,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "480"
+									"value": "475"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1e0-NZOQZ0HPrlY/Sh7sek8GWKA4yWY\""
+									"value": "W/\"1db-dUSqVLYoNafDxQ1Jc9MaLouztYw\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 28 Apr 2022 12:43:07 GMT"
+									"value": "Fri, 29 Apr 2022 01:07:36 GMT"
 								},
 								{
 									"key": "Connection",
@@ -116,7 +116,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"profile\": {\n            \"user\": {\n                \"id\": \"626a8bacceb4f5e50fa2a762\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        },\n        \"token\": {\n            \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE4YmFjY2ViNGY1ZTUwZmEyYTc2MiIsImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNjUxMTQ5Nzg3LCJleHAiOjE2NTYzMzM3ODd9.GDZVwvtrjxFFHA15oG11t88az4MyEN_X9Id5t0C4g1c\",\n            \"access_token_expiration\": \"2022-06-27T12:43:07.000Z\"\n        }\n    }\n}"
+							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"profile\": {\n            \"user\": {\n                \"id\": \"626b117f3571ea19913dc545\",\n                \"name\": \"Admin\",\n                \"email\": \"admin@example.com\",\n                \"role\": \"Admin\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 0\n            }\n        },\n        \"token\": {\n            \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmIxMTdmMzU3MWVhMTk5MTNkYzU0NSIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NTExOTQ0NTYsImV4cCI6MTY1NjM3ODQ1Nn0.adzigW8jLyS2iyhlg5gVysqM1rtaCWsrJVDArH_5cBo\",\n            \"access_token_expiration\": \"2022-06-28T01:07:36.000Z\"\n        }\n    }\n}"
 						}
 					]
 				},
@@ -154,7 +154,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"password\": \"changeme\"\n}",
+									"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe3@example.com\",\n    \"password\": \"changeme\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -190,15 +190,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "480"
+									"value": "483"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1e0-csFMNyj3V9t9FYU+SUDEQe80hN4\""
+									"value": "W/\"1e3-EmqHKwHgPL3+IbWvNqrTV1lbKLY\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 28 Apr 2022 12:42:20 GMT"
+									"value": "Fri, 29 Apr 2022 01:07:13 GMT"
 								},
 								{
 									"key": "Connection",
@@ -210,7 +210,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": 201,\n    \"data\": {\n        \"profile\": {\n            \"user\": {\n                \"id\": \"626a8bacceb4f5e50fa2a762\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        },\n        \"token\": {\n            \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE4YmFjY2ViNGY1ZTUwZmEyYTc2MiIsImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNjUxMTQ5NzQwLCJleHAiOjE2NTYzMzM3NDB9.Up6QOr2bBv3pL4YJj3NVCnwflmK1kyQqGg2uHfT4wyg\",\n            \"access_token_expiration\": \"2022-06-27T12:42:20.000Z\"\n        }\n    }\n}"
+							"body": "{\n    \"status\": 201,\n    \"data\": {\n        \"profile\": {\n            \"user\": {\n                \"id\": \"626b3a412cb5886fe9c4c6f1\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe3@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        },\n        \"token\": {\n            \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmIzYTQxMmNiNTg4NmZlOWM0YzZmMSIsImVtYWlsIjoiam9obmRvZTNAZXhhbXBsZS5jb20iLCJyb2xlIjoiVXNlciIsImlhdCI6MTY1MTE5NDQzMywiZXhwIjoxNjU2Mzc4NDMzfQ.n5MgDm07EcWqgsiSNj7uEmOJQBFJrHVXCAfvmo4pxlk\",\n            \"access_token_expiration\": \"2022-06-28T01:07:13.000Z\"\n        }\n    }\n}"
 						}
 					]
 				}
@@ -264,6 +264,10 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
@@ -273,11 +277,11 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8c-uJR2yajJioNDu6h0Xs/DFHkMlgc\""
+									"value": "W/\"8c-FD099EM6MT3XiSd8jcA8CI6tDfU\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 26 Apr 2022 17:19:24 GMT"
+									"value": "Fri, 29 Apr 2022 01:07:24 GMT"
 								},
 								{
 									"key": "Connection",
@@ -289,7 +293,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"user\": {\n            \"id\": \"6268049480c3a8b60f08a1fb\",\n            \"email\": \"johndoe@example.com\",\n            \"role\": \"User\"\n        },\n        \"spread\": {\n            \"spreadPercentage\": 2\n        }\n    }\n}"
+							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"user\": {\n            \"id\": \"626b26e4d92a9999dc354a3a\",\n            \"email\": \"johndoe@example.com\",\n            \"role\": \"User\"\n        },\n        \"spread\": {\n            \"spreadPercentage\": 2\n        }\n    }\n}"
 						}
 					]
 				}
@@ -316,27 +320,27 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/admin/users/6268348ff02946362d5c1fc0",
+									"raw": "{{url}}/admin/users/626b26e4d92a9999dc354a3a",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"admin",
 										"users",
-										"6268348ff02946362d5c1fc0"
+										"626b26e4d92a9999dc354a3a"
 									]
 								},
 								"description": "Updates use allowed properties."
 							},
 							"response": [
 								{
-									"name": "Updated User",
+									"name": "Update User",
 									"originalRequest": {
 										"method": "PUT",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\"\n}",
+											"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"role\": \"User\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -344,14 +348,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{url}}/admin/users/6268348ff02946362d5c1fc0",
+											"raw": "{{url}}/admin/users/626b26e4d92a9999dc354a3a",
 											"host": [
 												"{{url}}"
 											],
 											"path": [
 												"admin",
 												"users",
-												"6268348ff02946362d5c1fc0"
+												"626b26e4d92a9999dc354a3a"
 											]
 										}
 									},
@@ -364,20 +368,24 @@
 											"value": "Express"
 										},
 										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
 											"key": "Content-Type",
 											"value": "application/json; charset=utf-8"
 										},
 										{
 											"key": "Content-Length",
-											"value": "191"
+											"value": "158"
 										},
 										{
 											"key": "ETag",
-											"value": "W/\"bf-gcIuQ/hWB9RXvXjK2fmzoB2LrKU\""
+											"value": "W/\"9e-3Jh+VWWnS5Dv5hqrNyZbgqjNshs\""
 										},
 										{
 											"key": "Date",
-											"value": "Tue, 26 Apr 2022 19:39:37 GMT"
+											"value": "Fri, 29 Apr 2022 01:07:40 GMT"
 										},
 										{
 											"key": "Connection",
@@ -389,7 +397,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"id\": \"6268348ff02946362d5c1fc0\",\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"role\": \"User\",\n        \"password\": \"$2b$10$RQdPqkHHtIPVTxRJ/yDFt.HgVgBuFq2mGwFFORpjC0AZDLd6I83gS\"\n    }\n}"
+									"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"user\": {\n            \"id\": \"626b26e4d92a9999dc354a3a\",\n            \"name\": \"John Doe\",\n            \"email\": \"johndoe@example.com\",\n            \"role\": \"User\"\n        },\n        \"spread\": {\n            \"spreadPercentage\": 2\n        }\n    }\n}"
 								}
 							]
 						},
@@ -412,6 +420,178 @@
 								"description": "Delete a user by id."
 							},
 							"response": []
+						},
+						{
+							"name": "List User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List User",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "436"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1b4-oQpEWjWDiANbQ1HtD3FuNT6bv4w\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 29 Apr 2022 01:07:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"user\": {\n                \"id\": \"626b26e4d92a9999dc354a3a\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        },\n        {\n            \"user\": {\n                \"id\": \"626b387b7d914e282c087529\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe2@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        },\n        {\n            \"user\": {\n                \"id\": \"626b3a412cb5886fe9c4c6f1\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe3@example.com\",\n                \"role\": \"User\"\n            },\n            \"spread\": {\n                \"spreadPercentage\": 2\n            }\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Update User Spread",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"spread\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/admin/users/626b26e4d92a9999dc354a3a/spread",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"626b26e4d92a9999dc354a3a",
+										"spread"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update User Spread",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"spread\": 2\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/admin/users/626b26e4d92a9999dc354a3a/spread",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"users",
+												"626b26e4d92a9999dc354a3a",
+												"spread"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "158"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"9e-3Jh+VWWnS5Dv5hqrNyZbgqjNshs\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 29 Apr 2022 01:22:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"user\": {\n            \"id\": \"626b26e4d92a9999dc354a3a\",\n            \"name\": \"John Doe\",\n            \"email\": \"johndoe@example.com\",\n            \"role\": \"User\"\n        },\n        \"spread\": {\n            \"spreadPercentage\": 2\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				}
